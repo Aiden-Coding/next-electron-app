@@ -15,9 +15,10 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 
+import { cn } from "@/lib/utils";
 export default function Menu() {
   return (
-    <Menubar className="rounded-none border-b border-none px-2 lg:px-4">
+    <Menubar className={cn("rounded-none border-b border-none px-2 lg:px-4", "ml-[50px]")}>
       <MenubarMenu>
         <MenubarTrigger className="font-bold">Music</MenubarTrigger>
         <MenubarContent>

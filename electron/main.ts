@@ -4,6 +4,7 @@ import { getPort } from "get-port-please";
 import { startServer } from "next/dist/server/lib/start-server";
 import { join } from "path";
 
+process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 900,
