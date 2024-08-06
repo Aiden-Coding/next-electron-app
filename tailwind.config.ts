@@ -78,7 +78,16 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }) {
+      addUtilities({
+        ".draggable": {
+          "-webkit-app-region": "drag",
+        },
+      });
+    },
+  ],
 } satisfies Config;
 
 export default config;

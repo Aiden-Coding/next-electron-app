@@ -15,7 +15,7 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 
-export function Menu() {
+export default function Menu() {
   return (
     <Menubar className="rounded-none border-b border-none px-2 lg:px-4">
       <MenubarMenu>
@@ -195,6 +195,7 @@ export function Menu() {
           <MenubarItem inset>Add Account...</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
+      <div className="flex-1 draggable h-full"></div>
     </Menubar>
   );
 }
