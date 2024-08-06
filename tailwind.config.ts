@@ -1,6 +1,25 @@
 import type { Config } from "tailwindcss";
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
+import { PluginCreator } from "tailwindcss/types/config";
+
+type CSSProperties = {
+  [key: string]: string | number | CSSProperties;
+};
+
+interface AddUtilities {
+  (utilities: { [key: string]: CSSProperties }, variants?: string[]): void;
+}
+
+const myPlugin = ({ addUtilities }: { addUtilities: AddUtilities }) => {
+  const newUtilities = {
+    ".draggable": {
+      "-webkit-app-region": "drag",
+    },
+  };
+
+  addUtilities(newUtilities);
+};
 const config = {
   darkMode: ["class"],
   content: [
@@ -78,16 +97,7 @@ const config = {
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    function ({ addUtilities }) {
-      addUtilities({
-        ".draggable": {
-          "-webkit-app-region": "drag",
-        },
-      });
-    },
-  ],
+  plugins: [require("tailwindcss-animate"), myPlugin],
 } satisfies Config;
 
 export default config;
