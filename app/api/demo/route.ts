@@ -1,27 +1,21 @@
-export async function GET() {
-  const res = await fetch("https://data.mongodb-api.com/...", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "API-Key": process.env.DATA_API_KEY,
-    },
-  });
-  const data = await res.json();
+import db from "@/lib/db";
 
-  return Response.json({ data });
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const name = searchParams.get("name");
+  const email = searchParams.get("email");
+  const stmt = db.prepare("INSERT INTO users (name, email) VALUES (?, ?)");
+  stmt.run(name, email);
+  return new Response("Hello, Next.js!", {
+    status: 200,
+  });
 }
 
-export async function POST() {
-  const res = await fetch("https://data.mongodb-api.com/...", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "API-Key": process.env.DATA_API_KEY!,
-    },
-    body: JSON.stringify({ time: new Date().toISOString() }),
+export async function POST(req: Request) {
+  const { name, email } = await req.json();
+  const stmt = db.prepare("INSERT INTO users (name, email) VALUES (?, ?)");
+  stmt.run(name, email);
+  return new Response("Hello, Next.js!", {
+    status: 200,
   });
-
-  const data = await res.json();
-
-  return Response.json(data);
 }

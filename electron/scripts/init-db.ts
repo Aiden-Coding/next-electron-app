@@ -1,5 +1,5 @@
 // scripts/init-db.ts
-import db from "../lib/db";
+import db from "../../lib/db";
 
 const createTable = `
   CREATE TABLE IF NOT EXISTS users (
