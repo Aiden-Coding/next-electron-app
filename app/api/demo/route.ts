@@ -5,7 +5,7 @@ interface User {
   email: string;
 }
 export async function GET(request: Request) {
-  const stmt = db.prepare<User[]>("SELECT * FROM users");
+  const stmt = db.prepare("SELECT * FROM users");
   const users: User[] = stmt.all() as User[];
   return Response.json(users);
 }
