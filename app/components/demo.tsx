@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import store from "@/store/store";
 import { increment } from "@/store/counterSlice";
+import axiosInstance from "@/lib/axios";
+
 export default function Demo() {
   const dispatch = useDispatch();
   const count = useSelector((state: RootState) => state.counter.value);
@@ -13,6 +15,19 @@ export default function Demo() {
   useEffect(() => {
     setLatestCount(count);
   }, [count]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axiosInstance.get("/api/demo");
+      console.log(response);
+      return {
+        props: {
+          data: response.data,
+        },
+      };
+    }
+    fetchData();
+  }, []);
   useEffect(() => {
     console.log("Count updated:", count);
   }, [count]);
