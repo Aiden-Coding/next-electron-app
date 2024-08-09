@@ -3,6 +3,7 @@ import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Menu from "@/components/app-bar";
+import StoreProvider from "@/store/StoreProvider";
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -16,8 +17,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" suppressHydrationWarning>
       <head />
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
-        <Menu />
-        {children}
+        <StoreProvider>
+          <Menu />
+          {children}
+        </StoreProvider>
       </body>
     </html>
   );
