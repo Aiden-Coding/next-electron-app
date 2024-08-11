@@ -4,9 +4,9 @@
   "private": true,
   "main": "dist-electron/main.js",
   "scripts": {
-    "next:dev": "next dev",
+    "next:dev": "next dev -p 30011",
     "next:build": "next build",
-    "next:start": "next start",
+    "next:start": "next start -p 30011",
     "next:lint": "next lint",
     "postinstall": "electron-builder install-app-deps",
     "electron:build_watch": "tsup --watch",

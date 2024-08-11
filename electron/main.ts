@@ -25,7 +25,7 @@ const createWindow = () => {
 
   const loadURL = async () => {
     if (is.dev) {
-      mainWindow.loadURL("http://localhost:3000");
+      mainWindow.loadURL("http://localhost:30011");
     } else {
       try {
         const port = await startNextJSServer();
@@ -38,6 +38,7 @@ const createWindow = () => {
   };
 
   loadURL();
+  mainWindow.webContents.openDevTools();
   return mainWindow;
 };
 
