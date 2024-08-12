@@ -11,9 +11,9 @@ const createWindow = () => {
     height: 670,
     titleBarStyle: "hidden",
     titleBarOverlay: {
-      color: "rgba(0,0,0,0)",
+      color: "hsla(0, 0%, 100%,0)",
       height: 35,
-      symbolColor: "white",
+      symbolColor: "hsla(222.2, 47.4% ,11.2%,0)",
     },
     webPreferences: {
       preload: join(__dirname, "preload.js"),
@@ -39,6 +39,7 @@ const createWindow = () => {
 
   loadURL();
   mainWindow.webContents.openDevTools();
+
   return mainWindow;
 };
 
